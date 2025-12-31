@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(zcf:init-project)",
+      "Skill(zcf:init-project:*)",
+      "Skill(zcf:git-commit)",
+      "Skill(zcf:git-commit:*)"
+    ]
+  }
+}
