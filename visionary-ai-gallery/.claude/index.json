@@ -1,0 +1,113 @@
+{
+  "lastScanAt": "2025-12-31T10:50:38+08:00",
+  "projectRoot": "d:\\ai绘图网站\\visionary-ai-gallery",
+  "projectName": "visionary-ai-gallery",
+  "projectSummary": "一个基于 React 19 + Vite 的 AI 绘图画廊应用，集成了 Google Gemini 2.5 API 进行图片生成，支持图片上传、分类浏览、预览和管理功能",
+  "techStack": {
+    "framework": "React 19.2.3",
+    "buildTool": "Vite 6.2.0",
+    "language": "TypeScript 5.8.2",
+    "aiSDK": "@google/genai 1.34.0",
+    "ui": "Tailwind CSS (CDN) + Lucide React"
+  },
+  "modules": [
+    {
+      "path": "/",
+      "name": "root",
+      "type": "application",
+      "language": "TypeScript/TSX",
+      "description": "根目录，包含主应用组件和入口文件",
+      "entries": ["index.tsx", "App.tsx"],
+      "keyFiles": [
+        "index.tsx",
+        "App.tsx",
+        "types.ts",
+        "vite.config.ts",
+        "tsconfig.json",
+        "package.json",
+        "index.html"
+      ],
+      "interfaces": ["GalleryItem", "GenerationConfig"],
+      "enums": ["Category"],
+      "dataModel": {
+        "storage": "localStorage",
+        "key": "visionary_gallery",
+        "structure": "GalleryItem[]"
+      },
+      "config": {
+        "envFile": ".env.local",
+        "envVars": ["GEMINI_API_KEY"]
+      }
+    },
+    {
+      "path": "/components",
+      "name": "components",
+      "type": "ui",
+      "language": "TSX",
+      "description": "UI 组件目录",
+      "components": [
+        {
+          "name": "Sidebar",
+          "file": "components/Sidebar.tsx",
+          "props": ["selectedCategory", "onSelectCategory", "isOpen"],
+          "purpose": "左侧分类导航侧边栏"
+        },
+        {
+          "name": "Gallery",
+          "file": "components/Gallery.tsx",
+          "props": ["items", "category", "onDelete", "onPreview"],
+          "purpose": "图片网格画廊展示"
+        },
+        {
+          "name": "CreateModal",
+          "file": "components/CreateModal.tsx",
+          "props": ["isOpen", "onClose", "onSuccess"],
+          "purpose": "AI 生成/上传图片模态框"
+        },
+        {
+          "name": "ImageViewer",
+          "file": "components/ImageViewer.tsx",
+          "props": ["item", "onClose"],
+          "purpose": "全屏图片详情预览"
+        }
+      ]
+    },
+    {
+      "path": "/services",
+      "name": "services",
+      "type": "service",
+      "language": "TypeScript",
+      "description": "业务服务目录",
+      "services": [
+        {
+          "name": "geminiService",
+          "file": "services/geminiService.ts",
+          "exports": ["generateAIImage"],
+          "purpose": "调用 Google Gemini 2.5 API 生成图片",
+          "externalAPI": "Google Generative AI SDK",
+          "model": "gemini-2.5-flash-image"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "totalFiles": 13,
+    "scannedFiles": 13,
+    "coveragePercent": 100,
+    "byModule": {
+      "root": 9,
+      "components": 4,
+      "services": 1
+    },
+    "gaps": []
+  },
+  "ignoredPatterns": [
+    "node_modules/**",
+    "dist/**",
+    ".git/**",
+    "*.log",
+    ".history/**"
+  ],
+  "truncated": false,
+  "nextSteps": []
+}
